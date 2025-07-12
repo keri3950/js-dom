@@ -7,3 +7,40 @@ list.addEventListener("click", (e) => {
     list.removeChild(li);
   }
 });
+
+// add books
+const addBook = document.forms["add-book"];
+
+addBook.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const textValue = addBook.querySelector('input[type="text"]').value;
+
+  // create elements
+  const li = document.createElement("li");
+  const bookName = document.createElement("span");
+  const deleteBtn = document.createElement("button");
+
+  // add content
+  bookName.textContent = textValue;
+  deleteBtn.textContent = "delete";
+
+  //add classes
+  bookName.classList.add("name");
+  deleteBtn.classList.add("delete");
+
+  // append elements (order matters)
+  list.appendChild(li);
+  li.appendChild(bookName);
+  li.appendChild(deleteBtn);
+});
+
+// hide books
+const hideBox = document.querySelector("#hide");
+
+hideBox.addEventListener("change", (e) => {
+  if (hideBox.checked) {
+    list.style.display = "none";
+  } else {
+    list.style.display = "initial";
+  }
+});
