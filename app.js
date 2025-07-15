@@ -44,3 +44,19 @@ hideBox.addEventListener("change", (e) => {
     list.style.display = "initial";
   }
 });
+
+//search books
+const searchBooks = document.forms["search-books"].querySelector("input");
+
+searchBooks.addEventListener("keyup", (e) => {
+  const searchText = e.target.value;
+  const books = list.getElementsByTagName("li");
+  for (const book of books) {
+    const title = book.firstElementChild.textContent;
+    if (title.toLowerCase().indexOf(searchText) !== -1) {
+      book.style.display = "block";
+    } else {
+      book.style.display = "none";
+    }
+  }
+});
